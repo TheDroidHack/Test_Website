@@ -1,0 +1,43 @@
+// Function to load navbar, footer, and sidebar dynamically
+window.onload = function () {
+  // Load Navbar
+  fetch('../navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+      setActiveLink(); // Call the function to highlight the active link after loading navbar
+    })
+    .catch(error => console.error('Error loading navbar:', error));
+
+  // Load Footer
+  fetch('../footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading footer:', error));
+
+  // Load Sidebar
+  fetch('sidebar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('sidebar-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading sidebar:', error));
+};
+
+// Function to highlight the active link based on the current URL
+function setActiveLink() {
+  const currentUrl = window.location.pathname.split('/').pop(); // Get the current page's filename
+  const navbarLinks = document.querySelectorAll('.navbar-nav .nav-link'); // Select all navbar links
+
+  // Loop through each link to find a match
+  navbarLinks.forEach(link => {
+    // If the link's href matches the current URL, set it as active
+    if (link.getAttribute('href') === currentUrl) {
+      link.classList.add('active'); // Add the active class to the matching link
+    } else {
+      link.classList.remove('active'); // Remove the active class from non-matching links
+    }
+  });
+}

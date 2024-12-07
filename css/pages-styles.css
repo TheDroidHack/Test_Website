@@ -1,0 +1,26 @@
+/* Ensure the body takes at least 100% height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Flex container to make the footer stick at the bottom */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Make sure the body takes at least full height */
+}
+
+/* Main content area */
+.container {
+  flex: 1; /* This allows the content area to take the available space */
+}
+
+/* Footer */
+footer {
+  background-color: #333; /* Example background */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  /* Footer styling */
+}
